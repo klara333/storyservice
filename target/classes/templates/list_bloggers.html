@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{main}">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>My App</title>
+<link rel="stylesheet" th:href="@{/css/main.css}" href="../static/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link href='https://fonts.googleapis.com/css?family=Calibri' rel='stylesheet' type='text/css' />
+<link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="container my-3">
+			<div class="card">
+				<div class="card-body">
+					<div th:switch="${users}" class="container my-5">
+
+						<div class="col-md-10 center">
+							<h2 th:case="null">No record found !!</h2>
+							<div th:case="*">
+								<table class="table table-striped table-responsive-md" >
+									<thead align="left" >
+										<tr>
+											<th>First Name</th>
+											<th>Last Name</th>
+											<th>Email</th>
+										</tr>
+									</thead>
+									<tbody align="left" >
+										<tr th:each="user : ${users}">
+											<td th:text="${user.firstName}"></td>
+											<td th:text="${user.lastName}"></td>
+											<td th:text="${user.email}"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{main}">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>My App</title>
+<link rel="stylesheet" th:href="@{/css/main.css}" href="../static/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link href='https://fonts.googleapis.com/css?family=Calibri' rel='stylesheet' type='text/css' />
+<link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div layout:fragment="content" align="left">
+		<article>
+			<header>
+
+				<h1 th:text="${story.title}">Ez itt a cím</h1>
+				<p th:text="${#dates.format(story.posted, 'yyyy.MM.dd HH:mm')}">
+					Posted on September 31, 2015 at 10:00 PM</p>
+			</header>
+			<p th:text="${story.shortDescription}">Ez itt a rövid leírás</p>
+			<section th:utext="${story.content}">
+				<p>Carl összeráncolta szemöldökét, és felnézett az égre.
+					Bármennyire is erőlködött, nem tudott egyetlen másodpercnél tovább
+					a nap felé nézni. Az égitest vakító ereje bevilágította a
+					környéket, emellett pedig szúrós meleg pontként szurkálta
+					halántékát mind a két oldalról.</p>
+				<p>-Feladom… - gondolta, majd tekintetét a játszótérre emelte.
+					Innen a nyolcadik emeletről tökéletesen be lehetett látni az egész
+					grundot. A háztömbök által körülölelt focipályán a gyerekek
+					nyüzsögtek reggeltől estig. Ha az egyiket elhívták a szülei, szinte
+					azonnal jött a helyére egy másik. A hajnalban még négy fős csapatok
+					délutánra nyolc tagúra dagadtak, naplemente előtt pedig már nem is
+					lehetett pontosan megállapítani, hogy melyik térfelen hány gyerek
+					szaladgál fel-alá.</p>
+				<p></p>
+			</section>
+
+			<footer>
+				<br>
+				<address>
+					Beküldte: <span th:text="${story.user}">Anonymous</span>
+				</address>
+			</footer>
+		</article>
+
+
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>

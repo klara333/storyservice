@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8" />
+
+<title>My App</title>
+<link rel="stylesheet" th:href="@{/css/main.css}" href="../static/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+<link href='https://fonts.googleapis.com/css?family=Calibri' rel='stylesheet' type='text/css' />
+<link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div class="container text-center">
+
+		<nav class="navbar navbar-collapse navbar-default">
+<!-- <nav class = "navbar navbar-expand-lg navbar-light bg-light"> -->
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class=""><a href="/">Stories</a></li>
+										
+						<li class=""><a th:href="@{/bloggers}"> <span
+								sec:authorize="isAuthenticated()"> Blogers</span></a></li>
+
+						<li class=""><a th:href="@{/register}"> <span
+								sec:authorize="!isAuthenticated()"> Registration</span></a></li>
+
+						<li class=""><a th:href="@{/login}"> <span
+								sec:authorize="!isAuthenticated()"> Login</span></a></li>
+
+						<li class=""><a th:href="@{/add_story}"> <span
+								sec:authorize="isAuthenticated()"> Add new blog</span></a></li>
+					</ul>
+					<div class="navbar-text navbar-right">
+						Hi<b> <span sec:authentication="name"></b>					
+						
+						</span>
+						
+<!-- 						<span >					 -->
+<!-- 						bbb -->
+<!-- 						</span> -->
+
+						<form sec:authorize="isAuthenticated()" id="frmlogout"
+							th:action="@{/logout}" method="post" class="form-inline">
+							| <a href="javascript:{}"
+								onclick="document.getElementById('frmlogout').submit(); return false;">Log out</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div layout:fragment="content"></div>
+
+		<hr />
+		<footer>
+
+			<p class="text-left">©2021 Nefertiti</p>
+		</footer>
+	</div>
+
+</body>
+</html>
